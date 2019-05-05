@@ -1,0 +1,52 @@
+﻿## APIs:
+
+1)https://www.googleapis.com/youtube/v3/search?key=AIzaSyBb4J1i_FkOzLfdQo6Dwny7d1sh4CW7AM4&type=video&part=snippet&maxResults=15&q=js
+
+конкретный id(канал, пользователь):
+2)https://www.googleapis.com/youtube/v3/videos?key=AIzaSyCTWC75i70moJLzyNh3tt4jzCljZcRkU8Y&id=vISM1B4EcE0&part=snippet,statistics
+
+## NPM:
+
+1)npx eslint --init - настройка eslint с помощью терминала(вопросов)
+(npx eslint --init это замена ./node_modules/eslint/bin/eslint.js --init)
+
+2)npm install -D webpack webpack-cli webpack-dev-server
+-webpack-cli - нужен для того, чтобы можно было прописывать скрипты в package.json
+-webpack-dev-server - запускать код на сервере и смотреть изменения
+
+3)npm install -D eslint-loader style-loader css-loader html-webpack-plugin
+4)npm i -D @babel/core @babel/preset-env babel-loader - babel = транслирует код в более старые версии js; ещё нужен чтобы с помощью веб пака собирать все js файлы и не только в файлы типо app.bundle.js
+5)npm i -D jest - для юнит тестов(типо Mocha, Assert, supertest)
+
+## Package.json:
+
+1)"dev": "webpack-dev-server --mode development --watch"
+! --mode development - режим разработки(не сжатый код в отличие от режима production, где всё сжато и нечитаемо)
+! --watch - будет смотреть за изменениями в директории и если что-то поменялось автоматом обновит(перезагрузит) сервер
+2)"test": "jest" - благодаря конфигу знает куда идти
+3)"test-watch": "jest --watch" - смотрит за изменениями и запускает тот тест который конректо применялся, а другие игнорируются
+4)"coverage": "jest --coverage", - для отображения таблицы, кот. говорит как покрыли тестами нашу функциональность + создаёт папку coverage(записывается в .gitignore)
+
+## Webpack.config.js:
+
+!rules: [
+      // необязательная настройка
+      { enforce: 'pre', test: /\.js$/, loader: 'eslint-loader' },
+      ... ]
+
+!plugins: [new HtmlWebpackPlugin()], - добавит index.html при построении webpackom всего проекта с помощью npm run build
+
+- https://github.com/jantimon/html-webpack-plugin#options - какие опции можно передать в конструктор, например new HtmlWebpackPlugin({
+    title: 'Youtube',
+})
+
+!{
+    test: /\.css$/,
+    use: ['style-loader', 'css-loader'],
+  }, - секция с лоадерами для css нужна чтобы можно было использовать css внутри js
+
+## .babelrc - конфиг для babel
+
+## app.bundle.js - код вебпака, решает как правильно сбилдить модули
+
+## jest.config.js - конфиг для тестов
