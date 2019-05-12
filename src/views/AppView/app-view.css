@@ -1,8 +1,37 @@
-ul {
+/* ul {
   list-style: none;
 }
 
 ul li {
   background-color: aqua;
   padding: 10px;
+} */
+
+body,
+html {
+    color: #fff;
+    text-align: center;
+    margin: 0;
+}
+
+.items {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
+}
+
+.items.active {
+    cursor: grabbing;
+}
+
+.item {
+    display: inline-block;
+    background: skyblue;
+    min-height: 250px;
+    min-width: 400px;
+    margin: 2em 1em;
 }

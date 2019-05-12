@@ -15,6 +15,6 @@ export default class App {
     const data = await model.getClipNames(); // асинхронная ф-ция
     const view = new AppView(data); // закинули данные, которые будут отображаться на страницу html
 
-    view.render(); // загружаем данные на страницу html с помощью списка ul
+    view.render(); // загружаем данные на страницу html
   }
 }
